@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Agregar miembro</h2>
+<div mat-dialog-content fxLayout="row wrap"  fxLayoutAlign="center">
+  <mat-form-field appearance="outline" fxFlex="100%">
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="Nombre del miembro">
+    <mat-icon matSuffix>info</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" fxFlex="100%">
+    <mat-label>Cantidad</mat-label>
+    <input matInput placeholder="Ingrese un numero decimal valido" type="number">
+    <mat-icon matSuffix>monetization_on</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" fxFlex="100%">
+    <mat-label>Metodo de pago</mat-label>
+    <mat-select>
+      <mat-option value="0">Efectivo</mat-option>
+      <mat-option value="1">Transferencia</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<mat-spinner style="margin: 0px auto" [fxShow]="[this.loadSpinner]" [diameter]="30"></mat-spinner>
+<div mat-dialog-actions fxLayout.lt-sm="row nowrap">
+  <button mat-button (click)="onCancel()"  cdkFocusInitial>
+    <mat-icon fxHide.lt-sm="true" class="mat-18">cancel</mat-icon>
+    Cancelar
+  </button>
+  <button mat-button (click)="onAdd()" >
+    <mat-icon class="mat-18">done</mat-icon>
+    Agregar
+  </button>
+</div>

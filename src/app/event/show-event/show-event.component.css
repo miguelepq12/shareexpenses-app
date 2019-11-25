@@ -1,0 +1,22 @@
+.header-img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: -20px;
+}
+
+.header-img-small{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin-bottom: -15px;
+}
+
+.card-member{
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.card-member:hover{
+  transform: scale(1.01);
+}

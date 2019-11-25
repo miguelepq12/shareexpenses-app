@@ -1,0 +1,90 @@
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <div fxLayout="row wrap" fxFlex="100%" fxLayoutAlign="start" class="mt-2">
+    <div fxFlex="30%" fxLayout fxLayoutAlign="start start"  fxFlex.lt-sm="50%" fxFlexOrder.lt-sm="1">
+      <a mat-button routerLink="/home" style="margin-left: 20px" ngStyle.lt-md="margin-left: 0px">
+        <mat-icon class="mat-18">arrow_back</mat-icon>
+      </a>
+    </div>
+    <div fxFlex="40%" fxLayout="column" fxLayoutAlign="center center" class="text-roboto"  fxFlex.lt-sm="100%" fxFlexOrder.lt-sm="3">
+      <div>
+        <img [class.mat-elevation-z1]="true" src="../assets/profile.jpg" alt="" ngClass.gt-sm="header-img"
+             ngClass="header-img-small">
+      </div>
+      <h3 style="overflow: hidden; max-height: 60px" class="text-center mt-3 text-xl">Salida a comer</h3>
+      <p class="mt-1 text-center text-l">Comida</p>
+      <p class="mt-1 text-center text-xl">20000$</p>
+    </div>
+    <div fxFlex="30%" fxLayoutAlign="end start" fxFlex.lt-sm="50%" fxFlexOrder.lt-sm="2">
+      <button mat-icon-button aria-label="Example icon-button with a heart icon" class="m-3" style="margin: 5px 60px"
+              ngStyle.lt-sm="margin: 0px 20px;">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div fxFlex="100%" fxLayout="row wrap" class="my-4" fxLayoutAlign="center">
+    <mat-hint fxFlex.gt-sm="70%" fxFlex="80%" class="text-roboto text-start" fxHide.gt-md="true">Presionar miembro para modificar</mat-hint>
+    <mat-card fxLayout.gt-xs="row wrap" fxLayout="column" fxFlex.gt-sm="70%" fxFlex="80%" fxLayoutAlign="center center" class="mt-2 card-member"
+              fxLayoutGap="10px" fxLayoutGap.gt-xs="0px">
+      <mat-icon fxFlex.gt-xs="5%" fxShow="false" fxShow.gt-xs="true"  class="mat-18">person</mat-icon>
+      <p fxFlex.gt-xs="55%" class="m-0 text-bold">Miguel Piña</p>
+      <p fxFlex.gt-xs="20%" class="m-0">10000$</p>
+      <p fxFlex.gt-xs="20%" class="m-0">Efectivo</p>
+    </mat-card>
+    <mat-card fxLayout.gt-xs="row wrap" fxLayout="column" fxFlex.gt-sm="70%"  fxFlex="80%" fxLayoutAlign="center center" class="mt-2 card-member"
+              fxLayoutGap="10px" fxLayoutGap.gt-xs="0px">
+      <mat-icon fxFlex.gt-xs="5%" fxShow="false" fxShow.gt-xs="true"  class="mat-18">person</mat-icon>
+      <p fxFlex.gt-xs="55%" class="m-0 text-bold">Miguel Piña</p>
+      <p fxFlex.gt-xs="20%" class="m-0">10000$</p>
+      <p fxFlex.gt-xs="20%" class="m-0">Efectivo</p>
+    </mat-card>
+  </div>
+  <mat-tab-group fxFlex="80%" mat-align-tabs="center">
+    <mat-tab label="Resultado">
+      <div fxLayout="row wrap" class="text-roboto" fxLayoutAlign="center center" >
+        <mat-nav-list fxFlex="100%">
+          <mat-list-item >
+            <mat-icon matListIcon>payment</mat-icon>
+            <a matLine>Efectivo</a>
+            <p matLine>Total - 2000$</p>
+          </mat-list-item>
+          <mat-list-item >
+            <mat-icon matListIcon>payment</mat-icon>
+            <a matLine>Transferencia</a>
+            <p matLine>Total - 1200$</p>
+          </mat-list-item>
+        </mat-nav-list>
+        <h2 fxFlex="100%" fxLayoutAlign="center center" class="mt-1" ngClass.lt-md="text-m" >
+          <mat-icon class="mat-18 mr-1">account_balance_wallet</mat-icon>
+          Total pagado - 1000$</h2>
+        <h3 fxLayoutAlign="center center" fxFlex="100%" class="my-1" ngClass.lt-md="text-m">
+          <mat-icon class="mat-18 mr-1">account_balance</mat-icon>
+          Saldo - 1000$</h3>
+      </div>
+    </mat-tab>
+    <mat-tab label="Cuentas">
+      <mat-nav-list class="mb-1">
+        <h3 matSubheader>Deudores</h3>
+        <mat-list-item >
+          <mat-icon matListIcon>person</mat-icon>
+          <a matLine>Miguel Piña</a>
+          <p matLine>&nbsp;Cobrar 1200$</p>
+        </mat-list-item>
+        <mat-list-item >
+          <mat-icon matListIcon>person</mat-icon>
+          <a matLine>Otro nombre</a>
+          <p matLine>&nbsp;Cobrar 1200$</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Acreedores</h3>
+        <mat-list-item >
+          <mat-icon matListIcon>person</mat-icon>
+          <a matLine>Enmanuel Piña</a>
+          <p matLine>&nbsp;Retornar 1200$</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<button class="fab" mat-fab aria-label="Fab add" (click)="addMember()">
+  <mat-icon>add</mat-icon>
+</button>

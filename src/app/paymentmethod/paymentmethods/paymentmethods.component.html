@@ -1,0 +1,35 @@
+<div fxLayout="column">
+
+  <app-header fxLayout fxLayoutAlign="center"
+              [showLabel]="false" (searchText)="searchForText($event)"></app-header>
+
+
+  <div fxLayout="column" fxFlex="100%" class="item-board" style="padding: 10px 10px" ngStyle.gt-xs="padding: 10px 10%" >
+    <h2 style="font-family: Roboto, sans-serif;">Formas de pago</h2>
+    <mat-nav-list>
+      <mat-list-item >
+        <mat-icon matListIcon>payment</mat-icon>
+        <a matLine href="...">Efectivo</a>
+        <p matLine>
+          <span> 26 de Jul, 2019</span>
+        </p>
+        <button mat-icon-button (click)="deletePm()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item >
+        <mat-icon matListIcon>payment</mat-icon>
+        <a matLine href="...">Transferencia</a>
+        <p matLine>
+          <span> 26 de Jul, 2019</span>
+        </p>
+        <button mat-icon-button (click)="deletePm()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+</div>
+<button class="fab" mat-fab aria-label="Fab add" (click)="addPm()"  >
+  <mat-icon>add</mat-icon>
+</button>

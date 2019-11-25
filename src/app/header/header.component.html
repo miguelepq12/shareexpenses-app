@@ -1,0 +1,20 @@
+<mat-card fxLayout="row" fxFlex="90%" fxFlex.gt-sm="55%"
+          class="bar">
+  <button fxLayout fxLayoutAlign="center center" fxFlex="0 0 10%" fxFlex.lt-sm="0 0 15%" (click)="onClickDrawer()" mat-button>
+    <mat-icon class="mat-24">menu</mat-icon>
+  </button>
+  <div fxLayout.lt-sm="column" fxFlex="80%" fxFlex.lt-sm="70%" fxLayoutGap="3px"  style="padding:5px">
+    <input fxFlex="(showLabel)?70%:100%" fxFlex.lt-sm="100%" type="text" placeholder="Buscar" class="field-search border-style"
+           #search (keyup.enter)="onSearchText(search.value)">
+    <select fxFlex="30%" fxFlex.lt-sm="100%" class="field-filter border-style" [fxShow]="[showLabel]" #filter
+            (change)="onSelectLabel(filter.value)">
+      <option value="0">Todas las etiquetas</option>
+      <option value="1">Etiquetas</option>
+      <option value="2">Comida</option>
+    </select>
+  </div>
+  <button fxLayout fxLayoutAlign="center center" fxFlex="0 0 10%" fxFlex.lt-sm="0 0 15%" (click)="onClickProfile()" mat-button>
+    <img ngClass.gt-sm="img-profile" ngClass="img-profile-small" src="../assets/profile.jpg" alt="">
+  </button>
+</mat-card>
+

@@ -1,0 +1,26 @@
+<mat-sidenav-container class="drawer" >
+  <mat-sidenav  #drawer mode="over" style="width:300px" ngStyle.gt-sm="width:350px" position="end">
+    <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="center">
+      <div fxFlex="100%" fxLayoutAlign="center center">
+        <img [src]="[this.imageUpload?this.imageUpload:'../../../assets/profile.jpg']" alt="" class="img-select size-medium" ngClass.gt-lg="size-big">
+        <div class="base-img size-medium" ngClass.gt-lg="size-big" fxLayout fxLayoutAlign="center center" >
+          <input type="file" name="imgprofile" id="imgprofile" class="inputfile" accept="image/*" (change)="changeListener($event)" />
+          <mat-icon class="mat-18">search</mat-icon>
+          <label for="imgprofile" class="text-roboto" style="cursor: pointer">Seleccionar una imagen</label>
+        </div>
+      </div>
+      <div fxFlex="55%" fxLayout="column">
+        <h2 class="text-roboto text-center mt-1">Miguel Piña</h2>
+        <p class="text-roboto text-center mt-1">miguelepq@gmail.com</p>
+      </div>
+      <div fxFlex="55%" fxLayout="column" fxLayoutGap="20px">
+        <button mat-button>Cambiar contraseña</button>
+        <button mat-raised-button color="warn">Cerrar sesión</button>
+      </div>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,16 @@
+.drawer{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bg-header-drawer{
+  background-color:#f5f5f5;
+}
+
+.title{
+  color: #4d4d4c;
+  font-family: 'Livvic', sans-serif;
+}

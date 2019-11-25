@@ -1,1 +1,108 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.m-0{
+  margin: 0px;
+}
+.m-3{
+  margin: 30px;
+}
+
+.mt-1{
+  margin: 10px 0px 0px;
+}
+
+.mt-2{
+  margin: 20px 0px 0px;
+}
+.mt-3{
+  margin: 30px 0px 0px;
+}
+.mt-4{
+  margin: 40px 0px 0px;
+}
+.mt-5{
+  margin: 50px 0px 0px;
+}
+
+.mb-1{
+  margin: 0px 0px 10px;
+}
+
+.mb-2{
+  margin: 0px 0px 20px;
+}
+.my-2{
+  margin: 10px 0px;
+}
+.my-2{
+  margin: 20px 0px;
+}
+
+.my-4{
+  margin: 40px 0px;
+}
+
+.my-5{
+  margin: 50px 0px;
+}
+
+.ml-0{
+  margin: 0px 0px 0px 5px;
+}
+
+.ml-1{
+  margin: 0px 0px 0px 10px;
+}
+
+.mr-0{
+  margin: 0px 5px 0px 0px;
+}
+
+.mr-1{
+  margin: 0px 10px 0px 0px;
+}
+.text-start{
+  text-align: start;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-end{
+  text-align: end;
+}
+.text-m{
+  font-size: medium;
+}
+.text-l{
+  font-size: large;
+}
+.text-xl{
+  font-size: x-large;
+}
+
+.text-roboto{
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.text-light{
+  font-weight: 500;
+  color: #757575;
+}
+
+.text-bold{
+  font-weight: bold;
+}
+
+.list-item-active {
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.fab{
+  position: fixed !important;
+  top: 85%;
+  right: 5%;
+  z-index: 100;
+}

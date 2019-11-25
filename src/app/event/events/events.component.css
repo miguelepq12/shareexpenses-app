@@ -1,0 +1,21 @@
+.card-img{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  margin-bottom: -20px;
+}
+
+.card-img-small{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin-bottom: -15px;
+}
+.card{
+  transition: transform 1s;
+  cursor: pointer;
+}
+
+.card:hover{
+  transform: scale(1.02);
+}

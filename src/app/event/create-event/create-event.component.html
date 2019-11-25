@@ -1,0 +1,40 @@
+<div fxLayout="row wrap">
+  <div fxFlex="100%" fxLayoutAlign="start" class="mt-2">
+    <a mat-button routerLink="/home" style="margin-left: 20px" ngStyle.lt-md="margin-left: 0px">
+      <mat-icon class="mat-18">arrow_back</mat-icon>
+    </a>
+  </div>
+  <h2 fxFlex="100%" class="my-4 text-center text-roboto">Crear evento</h2>
+  <div fxFlex="25%" fxFlex.lt-md="100%" fxLayoutAlign="end center" fxLayoutAlign.lt-md="center center">
+    <img [src]="[this.imageUpload?this.imageUpload:'../../../assets/profile.jpg']" alt="" class="img-select size-medium" ngClass.gt-lg="size-big">
+    <div class="base-img size-medium" ngClass.gt-lg="size-big" fxLayout fxLayoutAlign="center center" >
+      <input type="file" name="imgevent" id="imgevent" class="inputfile" accept="image/*" (change)="loadImage($event)" />
+      <mat-icon class="mat-18">search</mat-icon>
+      <label for="imgevent" class="text-roboto" style="cursor: pointer">Seleccionar una imagen</label>
+    </div>
+  </div>
+  <div fxFlex="75%" fxFlex.lt-md="100%" fxLayout="column" style="padding: 0 10%" ngStyle.lt-md="margin-top: 20px">
+    <mat-form-field appearance="outline">
+      <mat-label>Concepto</mat-label>
+      <input matInput placeholder="Nombre del evento">
+      <mat-icon matSuffix>info</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cantidad</mat-label>
+      <input matInput placeholder="Ingrese un numero decimal valido" type="number">
+      <mat-icon matSuffix>monetization_on</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Etiqueta</mat-label>
+      <mat-select>
+        <mat-option value="0">Comida</mat-option>
+        <mat-option value="1">Entretenimiento</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxFlex="100%" fxLayoutAlign="center" class="my-4">
+    <button mat-raised-button color="primary" >Agregar</button>
+  </div>
+</div>

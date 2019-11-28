@@ -40,18 +40,26 @@ import {MatSnackBar, MatSnackBarContainer, MatSnackBarModule} from '@angular/mat
 import { ProfileComponent } from './user/profile/profile.component';
 import { LoginComponent } from './user/login/login.component';
 import { SignupComponent } from './user/signup/signup.component';
+import {FormsModule} from '@angular/forms';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {LocalUserService} from './services/local-user.service';
+import { LoaderComponent } from './views/loader/loader.component';
+import {LoaderInterceptor} from './helpers/loader.interceptor';
+import {AuthGuard} from './helpers/auth-guard';
+import {AuthGuardInverse} from './helpers/auth-guard-inverse';
+import {JwtInterceptor} from './helpers/jwt.interceptor';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: EventsComponent },
-  { path: 'labels', component: LabelsComponent },
-  { path: 'pms', component: PaymentmethodsComponent },
-  { path: 'events/create', component: CreateEventComponent },
-  { path: 'labels/create', component: CreateLabelComponent },
-  { path: 'pms/create', component: CreatePaymentmethodComponent },
-  { path: 'events/show/:id', component: ShowEventComponent },
-  { path: 'login', component: LoginComponent },
-  {path: 'signup', component: SignupComponent}
+  { path: 'home', component: EventsComponent,  canActivate: [AuthGuard] },
+  { path: 'labels', component: LabelsComponent,  canActivate: [AuthGuard] },
+  { path: 'pms', component: PaymentmethodsComponent,  canActivate: [AuthGuard] },
+  { path: 'events/create', component: CreateEventComponent,  canActivate: [AuthGuard] },
+  { path: 'labels/create', component: CreateLabelComponent,  canActivate: [AuthGuard] },
+  { path: 'pms/create', component: CreatePaymentmethodComponent,  canActivate: [AuthGuard] },
+  { path: 'events/show/:id', component: ShowEventComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardInverse] },
+  {path: 'signup', component: SignupComponent, canActivate: [AuthGuardInverse]}
 ];
 
 @NgModule({
@@ -69,7 +77,8 @@ const routes: Routes = [
     AddMemberDialogComponent,
     ProfileComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -89,10 +98,14 @@ const routes: Routes = [
     ColorSketchModule,
     ColorTwitterModule,
     MatTabsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [UserService, LabelService, PaymentMethodService, EventService, MemberService, SidenavService,
-    ProgressSpinnerService],
+    ProgressSpinnerService, LocalUserService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmDialogComponent, MatSpinner, AddMemberDialogComponent]
 })

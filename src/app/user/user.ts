@@ -3,6 +3,8 @@ export class User {
   email: string;
   username: string;
   pass: string;
+  passRepeat: string;
   profileImg: string;
   createAt: string;
+  token: string;
 }

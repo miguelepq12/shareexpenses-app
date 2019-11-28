@@ -3,19 +3,22 @@
     <h1 class="title" ngClass.lt-sm="text-xl">AppShareExpenses</h1>
   </div>
   <h2 fxFlex="100%" class="my-4 text-center text-roboto text-l" fxFlexAlign="center">Iniciar sesión</h2>
-  <div fxFlex fxLayout="column" style="padding: 0 30%" ngStyle.lt-md="margin-top: 20px; padding: 0 10%;">
-    <mat-form-field appearance="outline">
-      <mat-label>Usuario/Correo</mat-label>
-      <input matInput placeholder="Nombre de usuario / Correo">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" placeholder="Contraseña">
-    </mat-form-field>
-  </div>
-  <div fxFlex="100%" fxLayoutAlign="center" class="my-1">
-    <button mat-raised-button color="warn" >Inciar sesión</button>
-  </div>
+  <form #loginForm="ngForm"  fxFlex="100%" fxLayout="row wrap">
+    <div fxFlex fxLayout="column" style="padding: 0 30%" ngStyle.lt-md="margin-top: 20px; padding: 0 10%;">
+      <mat-form-field appearance="outline" hideRequiredMarker>
+        <mat-label>Usuario/Correo</mat-label>
+        <input matInput required placeholder="Nombre de usuario / Correo" [(ngModel)]="user.username" name="username" #username="ngModel">
+      </mat-form-field>
+      <mat-form-field appearance="outline" hideRequiredMarker>
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" required placeholder="Contraseña" [(ngModel)]="user.pass" name="pass" #pass="ngModel">
+        <mat-error>La contraseña no puede estar vacía</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="100%" fxLayoutAlign="center" class="my-1">
+      <button mat-raised-button color="warn" role="button" (click)="signIn(); pass.reset();" [disabled]="!loginForm.form.valid">Inciar sesión</button>
+    </div>
+  </form>
   <div fxFlex="100%" fxLayoutAlign="center" class="my-2">
     <button mat-raised-button color="primary" routerLink="/signup" >Registrarse</button>
   </div>

@@ -15,7 +15,7 @@
       </div>
       <div fxFlex="55%" fxLayout="column" fxLayoutGap="20px">
         <button mat-button>Cambiar contraseña</button>
-        <button mat-raised-button color="warn">Cerrar sesión</button>
+        <button mat-raised-button color="warn" (click)="auth.logout(); drawer.toggle(false); router.navigate(['login'])">Cerrar sesión</button>
       </div>
     </div>
 

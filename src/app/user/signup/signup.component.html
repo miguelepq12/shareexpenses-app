@@ -5,6 +5,10 @@
     </a>
   </div>
   <h2 fxFlex="100%" class="my-4 text-center text-roboto">Registrarse</h2>
+  <div fxFlex="100%" class="my-2" *ngIf="errors">
+      <mat-error *ngIf="errors.username">{{errors.username}}</mat-error>
+      <mat-error *ngIf="errors.email">{{errors.email}}</mat-error>
+  </div>
   <div fxFlex="25%" fxFlex.lt-md="100%" fxLayoutAlign="end center" fxLayoutAlign.lt-md="center center">
     <img [src]="[this.imageUpload?this.imageUpload:'../../../assets/profile.jpg']" alt="" class="img-select size-medium" ngClass.gt-lg="size-big">
     <div class="base-img size-medium" ngClass.gt-lg="size-big" fxLayout fxLayoutAlign="center center" >
@@ -13,30 +17,30 @@
       <label for="imguser" class="text-roboto" style="cursor: pointer">Seleccionar una imagen</label>
     </div>
   </div>
-  <div fxFlex="75%" fxFlex.lt-md="100%" fxLayout="column" style="padding: 0 10%" ngStyle.lt-md="margin-top: 20px">
-    <mat-form-field appearance="outline">
+  <form #formSignUp="ngForm" fxFlex="75%" fxFlex.lt-md="100%" fxLayout="column" style="padding: 0 10%" ngStyle.lt-md="margin-top: 20px">
+    <mat-form-field appearance="outline" hideRequiredMarker>
       <mat-label>Nombre de usuario</mat-label>
-      <input matInput placeholder="Nombre de usuario">
+      <input matInput required placeholder="Nombre de usuario" [(ngModel)]="user.username" name="username" #username="ngModel">
       <mat-icon matSuffix>info</mat-icon>
+      <h2>Hola</h2>
     </mat-form-field>
-
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" hideRequiredMarker>
       <mat-label>Correo</mat-label>
-      <input matInput placeholder="Ingrese un correo valido" type="email">
+      <input matInput required placeholder="Ingrese un correo valido" type="email" [(ngModel)]="user.email" name="email" #email="ngModel">
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" hideRequiredMarker>
       <mat-label>Contraseña</mat-label>
-      <input matInput type="password" placeholder="Contraseña">
+      <input matInput required type="password" placeholder="Contraseña" [(ngModel)]="user.pass" name="pass" #pass="ngModel">
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" hideRequiredMarker>
       <mat-label>Repita la Contraseña</mat-label>
-      <input matInput type="password" placeholder="Repita la contraseña">
+      <input matInput required type="password" placeholder="Repita la contraseña" [(ngModel)]="user.passRepeat" name="passRepeat" #passRepeat="ngModel">
     </mat-form-field>
-  </div>
+  </form>
   <div fxFlex="100%" fxLayoutAlign="center" class="my-4">
-    <button mat-raised-button color="accent"  >Registrarse</button>
+    <button mat-raised-button color="accent" [disabled]="formSignUp.invalid || (pass.value!=passRepeat.value)" (click)="onSignUp()">Registrarse</button>
   </div>
 </div>

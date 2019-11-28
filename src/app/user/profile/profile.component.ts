@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatSidenav} from "@angular/material/sidenav";
-import {SidenavService} from "../../services/sidenav.service";
+import {MatSidenav} from '@angular/material/sidenav';
+import {SidenavService} from '../../services/sidenav.service';
+import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +14,7 @@ export class ProfileComponent implements OnInit {
   private imageUpload: any;
   @ViewChild('drawer', {static: false}) drawer: MatSidenav;
 
-  constructor(private sidenavService: SidenavService) {
+  constructor(private sidenavService: SidenavService, private auth: AuthService, private router: Router) {
     sidenavService.openProfile$.subscribe(
       isOpen => {
         this.onClickDrawer(isOpen);

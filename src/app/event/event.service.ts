@@ -11,12 +11,11 @@ import {Event} from './event';
 })
 export class EventService {
 
-  private URL_EVENT = VariablesApp.URL_API + 'event/';
+  private URL_EVENT = VariablesApp.URL_API + 'events/';
   public URL_UPLOAD = this.URL_EVENT + 'uploads/';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient,
-              private router: Router) { }
+  constructor(private http: HttpClient) { }
   /*
     Retorno Json: events (Lista de event)
    */

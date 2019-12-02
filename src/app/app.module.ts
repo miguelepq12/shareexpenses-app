@@ -48,6 +48,7 @@ import {LoaderInterceptor} from './helpers/loader.interceptor';
 import {AuthGuard} from './helpers/auth-guard';
 import {AuthGuardInverse} from './helpers/auth-guard-inverse';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
+import { ChangePassDialogComponent } from './dialogs/change-pass-dialog/change-pass-dialog.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -78,7 +79,8 @@ const routes: Routes = [
     ProfileComponent,
     LoginComponent,
     SignupComponent,
-    LoaderComponent
+    LoaderComponent,
+    ChangePassDialogComponent
   ],
   imports: [
     BrowserModule,

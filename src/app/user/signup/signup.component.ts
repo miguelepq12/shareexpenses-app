@@ -4,6 +4,7 @@ import {User} from '../user';
 import {MatSnackBar} from '@angular/material';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {SnackbarService} from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,16 +18,10 @@ export class SignupComponent implements OnInit {
   private user: User = new User();
   private errors;
 
-  constructor(private userService: UserService, private snackBar: MatSnackBar,
+  constructor(private userService: UserService, private snackBar: SnackbarService,
               private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-  }
-
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 2000,
-    });
   }
 
   loadImage($event): void {
@@ -50,7 +45,7 @@ export class SignupComponent implements OnInit {
     this.userService.signUp(this.user).subscribe(
       response => {
         this.auth.saveUserToken(response.user, response.token);
-        this.openSnackBar(response.mensaje, 'OK');
+        this.snackBar.showShort(response.mensaje, 'OK');
         this.router.navigate(['home']);
       },
       response => {

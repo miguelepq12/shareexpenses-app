@@ -5,6 +5,7 @@ import {ProgressSpinnerService} from '../../services/progress-spinner.service';
 import {MatDialog} from '@angular/material/dialog';
 import {AddMemberDialogComponent} from '../../dialogs/add-member-dialog/add-member-dialog.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {SnackbarService} from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-show-event',
@@ -16,7 +17,7 @@ export class ShowEventComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private sidenavService: SidenavService,
               private activatedRoute: ActivatedRoute, private progress: ProgressSpinnerService,
-              private _snackBar: MatSnackBar) {
+              private snackBar: SnackbarService) {
   }
 
   ngOnInit() {
@@ -39,13 +40,7 @@ export class ShowEventComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result.confirm);
-      this.openSnackBar('Miembro agregado', 'Hecho');
-    });
-  }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
+      this.snackBar.showShort('Miembro agregado', 'Hecho');
     });
   }
 }

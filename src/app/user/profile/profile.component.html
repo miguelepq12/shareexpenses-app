@@ -10,12 +10,12 @@
         </div>
       </div>
       <div fxFlex="55%" fxLayout="column">
-        <h2 class="text-roboto text-center mt-1">Miguel Piña</h2>
-        <p class="text-roboto text-center mt-1">miguelepq@gmail.com</p>
+        <h2 class="text-roboto text-center mt-1" *ngIf="localUser">{{localUser.username}}</h2>
+        <p class="text-roboto text-center mt-1" *ngIf="localUser">{{localUser.email}}</p>
       </div>
       <div fxFlex="55%" fxLayout="column" fxLayoutGap="20px">
-        <button mat-button>Cambiar contraseña</button>
-        <button mat-raised-button color="warn" (click)="auth.logout(); drawer.toggle(false); router.navigate(['login'])">Cerrar sesión</button>
+        <button mat-button (click)="changePass()">Cambiar contraseña</button>
+        <button mat-raised-button color="warn" (click)="signOut()">Cerrar sesión</button>
       </div>
     </div>
 

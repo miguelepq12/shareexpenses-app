@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Cambiar contraseña</h2>
+<div mat-dialog-content fxLayout="row wrap"  fxLayoutAlign="center">
+  <mat-form-field appearance="outline" fxFlex="100%">
+    <mat-label>Contraseña nueva</mat-label>
+    <input matInput placeholder="Contraseña nueva" #pass>
+    <mat-icon matSuffix>info</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="outline" fxFlex="100%">
+    <mat-label>Repetir contraseña nueva</mat-label>
+    <input matInput placeholder="Repetir contraseña nueva" #repeatPass>
+    <mat-icon matSuffix>info</mat-icon>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions fxLayout.lt-sm="row nowrap">
+  <button mat-button (click)="onCancel()"  cdkFocusInitial>
+    <mat-icon fxHide.lt-sm="true" class="mat-18">cancel</mat-icon>
+    Cancelar
+  </button>
+  <button mat-button (click)="onChange(pass)" [disabled]="repeatPass.value!=pass.value" >
+    <mat-icon class="mat-18">done</mat-icon>
+    Cambiar contraseña
+  </button>
+</div>

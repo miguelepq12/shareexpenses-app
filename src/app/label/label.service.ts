@@ -32,7 +32,7 @@ export class LabelService {
     Retorna Json:
    */
   getLabel(idLabel): Observable<Label> {
-    return this.http.get<Label>(this.URL_LABEL + Label).pipe(
+    return this.http.get<Label>(this.URL_LABEL + idLabel).pipe(
       map(response => {
         return response;
       }),

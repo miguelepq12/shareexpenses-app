@@ -18,8 +18,8 @@ export class MemberService {
   /*
     Retorno Json: members (lista de Member)
    */
-  getMembers(eventId): Observable<Member[]> {
-    return this.http.get<any>(this.URL_MEMBER + '?event=' + eventId).pipe(
+  getMembers(idEvent): Observable<Member[]> {
+    return this.http.get<any>(this.URL_MEMBER + '?event=' + idEvent).pipe(
       map(response => {
         return response.members as Member[];
       }),
@@ -29,8 +29,8 @@ export class MemberService {
     );
   }
 
-  addMember(member: Member, eventId): Observable<Member> {
-    return this.http.post<Member>(this.URL_MEMBER, member, {headers: this.httpHeaders}).pipe(
+  addMember(member: Member, idEvent): Observable<Member> {
+    return this.http.post<Member>(this.URL_MEMBER + '?event=' + idEvent, member, {headers: this.httpHeaders}).pipe(
       catchError(e => {
         return throwError(e);
       })

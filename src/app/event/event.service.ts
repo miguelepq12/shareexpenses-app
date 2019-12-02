@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {VariablesApp} from '../helpers/variables-app';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Router} from '@angular/router';
 import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Event} from './event';

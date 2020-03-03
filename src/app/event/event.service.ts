@@ -21,6 +21,9 @@ export class EventService {
   getEvents(page, name, label): Observable<Event[]> {
     return this.http.get<any>(this.URL_EVENT + '?page=' + page + '&name=' + name + '&label=' + label).pipe(
       map(response => {
+        for (const res of response.events as Event[]) {
+          res.img = this.URL_UPLOAD + res.img;
+        }
         return response.events as Event[];
       }),
       catchError(err => {

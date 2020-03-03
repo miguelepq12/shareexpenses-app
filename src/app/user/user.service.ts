@@ -32,6 +32,7 @@ export class UserService {
   getProfile(): Observable<User> {
     return this.http.get<any>(this.URL_USER + 'profile').pipe(
       map(response => {
+        response.user.profileImg = this.URL_UPLOAD + response.user.profileImg;
         return response.user as User;
       }),
       catchError(err => {

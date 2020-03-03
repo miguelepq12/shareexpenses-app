@@ -7,14 +7,13 @@
     <input fxFlex="(showLabel)?70%:100%" fxFlex.lt-sm="100%" type="text" placeholder="Buscar" class="field-search border-style"
            #search (keyup.enter)="onSearchText(search.value)">
     <select fxFlex="30%" fxFlex.lt-sm="100%" class="field-filter border-style" [fxShow]="[showLabel]" #filter
-            (change)="onSelectLabel(filter.value)">
+            (change)="onSelectLabel(filter.value)" >
       <option value="0">Todas las etiquetas</option>
-      <option value="1">Etiquetas</option>
-      <option value="2">Comida</option>
+      <option *ngFor="let l of labels" [value]="l.id">{{l.name}}</option>
     </select>
   </div>
   <button fxLayout fxLayoutAlign="center center" fxFlex="0 0 10%" fxFlex.lt-sm="0 0 15%" (click)="onClickProfile()" mat-button>
-    <img ngClass.gt-sm="img-profile" ngClass="img-profile-small" src="../assets/profile.jpg" alt="">
+    <img ngClass.gt-sm="img-profile" ngClass="img-profile-small" [src]="imgUser" alt="">
   </button>
 </mat-card>
 

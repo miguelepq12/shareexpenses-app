@@ -55,5 +55,10 @@ export class EventsComponent implements OnInit {
         this.events = result;
       }
     );
+    console.log('ho');
+  }
+
+ onScroll() {
+    console.log('hollla');
   }
 }

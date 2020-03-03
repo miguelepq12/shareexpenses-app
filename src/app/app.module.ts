@@ -50,6 +50,8 @@ import {AuthGuardInverse} from './helpers/auth-guard-inverse';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import { ChangePassDialogComponent } from './dialogs/change-pass-dialog/change-pass-dialog.component';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: EventsComponent,  canActivate: [AuthGuard] },
@@ -102,7 +104,8 @@ const routes: Routes = [
     MatTabsModule,
     MatSnackBarModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule
   ],
   providers: [UserService, LabelService, PaymentMethodService, EventService, MemberService, SidenavService,
     ProgressSpinnerService, LocalUserService,

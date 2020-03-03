@@ -1,22 +1,26 @@
-<div fxLayout="column">
+<div fxLayout="column" >
 
   <app-header fxLayout fxLayoutAlign="center"
               [showLabel]="true" (searchText)="searchForText($event)"
               (labelSelect)="searchForLabel($event)"></app-header>
 
-  <div fxLayout="row wrap" fxFlex="100%" fxLayoutAlign="space-evenly" class="item-board" ngStyle.gt-sm="padding:20px" >
+  <div fxLayout="row wrap" fxFlex="100%" fxLayoutAlign="space-evenly" class="item-board" ngStyle.gt-sm="padding:20px"
+       infiniteScroll
+       [infiniteScrollDistance]="2"
+       infiniteScrollContainer=".item-board"
+       (scrolled)="onScroll()">
     <div fxLayout fxFlex.gt-sm="30%" fxFlex="90%" style="height: 440px;padding:30px" *ngFor="let ev of events">
       <mat-card fxFlex fxLayout="column" class="card" (click)="toEvent(ev)">
         <div fxLayout fxLayoutAlign="center end" fxFlex="40%" style="background-color: #3f51b5">
           <img [class.mat-elevation-z1]="true" [src]="ev.img" alt="" ngClass.gt-sm="card-img"
-               ngClass="card-img-small">
+               class="card-img-small">
         </div>
 
-        <h3 style="overflow: hidden; max-height: 60px" class="text-center mt-3 text-xl">{{ev.name}}</h3>
+        <h3 class="text-center mt-3 text-xl limit-title">{{ev.name}}</h3>
         <p class="mt-1 text-center text-xl">{{ev.amount}}$</p>
 
         <div fxLayout fxLayoutAlign="start center" class="mt-2">
-          <mat-icon class="mat-18">event</mat-icon>
+          <mat-icon class="mat-18">event </mat-icon>
           <p class="ml-0">{{ev.label.name}}</p>
         </div>
 

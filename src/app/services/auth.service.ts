@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {VariablesApp} from '../helpers/variables-app';
+import {UserService} from "../user/user.service";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

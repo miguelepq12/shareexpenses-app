@@ -9,9 +9,10 @@ import {VariablesApp} from '../helpers/variables-app';
 @Injectable()
 export class UserService {
 
+  private static URL_USER = VariablesApp.URL_API + 'user/';
+  public static URL_UPLOAD = UserService.URL_USER + 'uploads/';
+
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  private URL_USER = VariablesApp.URL_API + 'user/';
-  public URL_UPLOAD = this.URL_USER + 'uploads/';
 
 
   constructor(private http: HttpClient,
@@ -30,9 +31,9 @@ export class UserService {
   }
 
   getProfile(): Observable<User> {
-    return this.http.get<any>(this.URL_USER + 'profile').pipe(
+    return this.http.get<any>(UserService.URL_USER + 'profile').pipe(
       map(response => {
-        response.user.profileImg = this.URL_UPLOAD + response.user.profileImg;
+        response.user.profileImg = UserService.URL_UPLOAD + response.user.profileImg;
         return response.user as User;
       }),
       catchError(err => {
@@ -42,7 +43,7 @@ export class UserService {
   }
 
   changeImage(imgBase64: string): Observable<User> {
-    return this.http.put<any>(this.URL_USER + 'img', {profileImg: imgBase64},
+    return this.http.put<any>(UserService.URL_USER + 'img', {profileImg: imgBase64},
       {headers: this.httpHeaders}).pipe(
       map(response => {
         return response.user as User;
@@ -54,7 +55,7 @@ export class UserService {
   }
 
   changePass(newPass: string): Observable<any> {
-    return this.http.put<any>(this.URL_USER + 'pass', {pass: newPass},
+    return this.http.put<any>(UserService.URL_USER + 'pass', {pass: newPass},
       {headers: this.httpHeaders}).pipe(
       catchError(e => {
         return throwError(e);

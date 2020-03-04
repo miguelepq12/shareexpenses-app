@@ -2,7 +2,7 @@
   <mat-sidenav  #drawer mode="over" style="width:300px" ngStyle.gt-sm="width:350px" position="end">
     <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="center">
       <div fxFlex="100%" fxLayoutAlign="center center">
-        <img [src]="[this.imageUpload?this.imageUpload:'../../../assets/profile.jpg']" alt="" class="img-select size-medium" ngClass.gt-lg="size-big">
+        <img [src]="[this.imageUpload]" alt="" class="img-select size-medium" ngClass.gt-lg="size-big">
         <div class="base-img size-medium" ngClass.gt-lg="size-big" fxLayout fxLayoutAlign="center center" >
           <input type="file" name="imgprofile" id="imgprofile" class="inputfile" accept="image/*" (change)="changeListener($event)" />
           <mat-icon class="mat-18">search</mat-icon>

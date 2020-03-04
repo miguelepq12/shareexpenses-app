@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
     this.drawer.toggle(isOpen);
 
     if (!isOpen) {
-      this.imageUpload = this.userService.URL_UPLOAD + this.localUser.profileImg;
+      this.imageUpload = UserService.URL_UPLOAD + this.localUser.profileImg;
     }
   }
 
@@ -53,16 +53,16 @@ export class ProfileComponent implements OnInit {
     const file: File = inputValue.files[0];
     const myReader: FileReader = new FileReader();
 
-
     myReader.onloadend = (e) => {
       this.imageUpload = myReader.result;
-      this.changeImg(this.imageUpload);
+      this.changeImg(this.imageUpload, file.name);
     };
 
     myReader.readAsDataURL(file);
   }
 
-  changeImg(img: any) {
+  changeImg(img: any, name: string) {
+    img = 'name:' + name + ';;' + img;
     this.userService.changeImage(img).subscribe(
       response => {
         this.auth.saveUserToken(response, this.localUser.token);

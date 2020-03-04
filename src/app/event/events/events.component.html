@@ -1,14 +1,14 @@
-<div fxLayout="column" >
+<div fxLayout="column" style="height: 100%;overflow: scroll;" infiniteScroll
+     [infiniteScrollDistance]="1"
+     [scrollWindow]="false"
+     (scrolled)="onScroll()" >
 
   <app-header fxLayout fxLayoutAlign="center"
               [showLabel]="true" (searchText)="searchForText($event)"
               (labelSelect)="searchForLabel($event)"></app-header>
 
   <div fxLayout="row wrap" fxFlex="100%" fxLayoutAlign="space-evenly" class="item-board" ngStyle.gt-sm="padding:20px"
-       infiniteScroll
-       [infiniteScrollDistance]="2"
-       infiniteScrollContainer=".item-board"
-       (scrolled)="onScroll()">
+       >
     <div fxLayout fxFlex.gt-sm="30%" fxFlex="90%" style="height: 440px;padding:30px" *ngFor="let ev of events">
       <mat-card fxFlex fxLayout="column" class="card" (click)="toEvent(ev)">
         <div fxLayout fxLayoutAlign="center end" fxFlex="40%" style="background-color: #3f51b5">

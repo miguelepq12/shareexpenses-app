@@ -15,6 +15,7 @@ export class EventsComponent implements OnInit {
   page: number;
   nameSearch: string;
   labelSearch: string;
+  finalPage = false;
 
   constructor(private sidenavService: SidenavService, private router: Router,
               private eventService: EventService) {
@@ -22,20 +23,16 @@ export class EventsComponent implements OnInit {
 
   public searchForText(text: string): void {
     this.nameSearch = text;
-    this.eventService.getEvents(this.page, this.nameSearch, this.labelSearch).subscribe(
-      result => {
-        this.events = result;
-      }
-    );
+    this.page = 0;
+    this.finalPage = false;
+    this.getEvents();
   }
 
   public searchForLabel(label: string): void {
     this.labelSearch = label;
-    this.eventService.getEvents(this.page, this.nameSearch, this.labelSearch).subscribe(
-      result => {
-        this.events = result;
-      }
-    );
+    this.page = 0;
+    this.finalPage = false;
+    this.getEvents();
   }
 
   public addEvent(): void {
@@ -50,15 +47,28 @@ export class EventsComponent implements OnInit {
     this.page = 0;
     this.labelSearch = '';
     this.nameSearch = '';
+    this.finalPage = false;
+    this.getEvents();
+  }
+
+  getEvents(): void {
     this.eventService.getEvents(this.page, this.nameSearch, this.labelSearch).subscribe(
       result => {
+        this.finalPage = result.length === 0;
         this.events = result;
       }
     );
-    console.log('ho');
   }
 
  onScroll() {
-    console.log('hollla');
+   this.page++;
+   if (!this.finalPage) {
+      this.eventService.getEvents(this.page, this.nameSearch, this.labelSearch).subscribe(
+        result => {
+          this.finalPage = result.length === 0;
+          this.events = this.events.concat(result);
+        }
+      );
+    }
   }
 }
